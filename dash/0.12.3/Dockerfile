@@ -28,8 +28,8 @@ RUN set -ex \
 ENV BITCOIN_DATA /data
 RUN mkdir "$BITCOIN_DATA" \
 	&& chown -R bitcoin:bitcoin "$BITCOIN_DATA" \
-	&& ln -sfn "$BITCOIN_DATA" /home/bitcoin/.dash \
-	&& chown -h bitcoin:bitcoin /home/bitcoin/.dash
+	&& ln -sfn "$BITCOIN_DATA" /home/bitcoin/.dashcore \
+	&& chown -h bitcoin:bitcoin /home/bitcoin/.dashcore
 VOLUME /data
 
 COPY docker-entrypoint.sh /entrypoint.sh
