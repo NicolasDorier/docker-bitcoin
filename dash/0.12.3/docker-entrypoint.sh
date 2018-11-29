@@ -15,8 +15,8 @@ if [[ "$1" == "dash-cli" || "$1" == "dash-tx" || "$1" == "dashd" || "$1" == "tes
 	# we do not update group ownership here, in case users want to mount
 	# a host directory and still retain access to it
 	chown -R bitcoin "$BITCOIN_DATA"
-	ln -sfn "$BITCOIN_DATA" /home/bitcoin/.dash
-	chown -h bitcoin:bitcoin /home/bitcoin/.dash
+	ln -sfn "$BITCOIN_DATA" /home/bitcoin/.dashcore
+	chown -h bitcoin:bitcoin /home/bitcoin/.dashcore
 
 	exec gosu bitcoin "$@"
 else
