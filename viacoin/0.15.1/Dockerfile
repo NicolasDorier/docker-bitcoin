@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-RUN groupadd -r viacoin && useradd -r -m -g viacoin viacoin
+RUN groupadd -r bitcoin && useradd -r -m -g bitcoin bitcoin
 
 RUN set -ex \
 	&& apt-get update \
@@ -21,12 +21,13 @@ RUN set -ex \
 
 # create data directory
 # To speed up sync process: https://bootstrap.viacoin.org/
-ENV VIACOIN_DATA /data
-RUN mkdir "$VIACOIN_DATA" \
-	&& chown -R viacoin:viacoin "$VIACOIN_DATA" \
-	&& ln -sfn "$VIACOIN_DATA" /home/viacoin/.viacoin \
-	&& chown -h viacoin:viacoin /home/viacoin/.viacoin
+ENV BITCOIN_DATA /data
+RUN mkdir "$BITCOIN_DATA" \
+	&& chown -R bitcoin:bitcoin "$BITCOIN_DATA" \
+	&& ln -sfn "$BITCOIN_DATA" /home/bitcoin/.viacoin \
+	&& chown -h bitcoin:bitcoin /home/bitcoin/.viacoin
 VOLUME /data
+
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
